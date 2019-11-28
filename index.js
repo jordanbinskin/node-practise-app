@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const generic = express.Router();
 const api = express.Router();
 
@@ -27,7 +28,11 @@ let phonebook = [
   }
 ]
 
+morgan.token('body', (req, res) => JSON.stringify(req.body))
 app.use(bodyParser.json());
+app.use(morgan('tiny'))
+app.use(morgan(':body'))
+
 
 generic.get('/', (req, res) => res.send('<h1>Welcome to the phonebook API</h1>'))
 
