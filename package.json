@@ -8,13 +8,14 @@
     "start:dev": "node_modules/.bin/nodemon index.js",
     "build:ui": "rm -rf build && cd ../fullstackac/part2/forms/ && npm run build --prod && cp -r build ../../../fso-part3-exercise/",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.7.12",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.1"
   }
