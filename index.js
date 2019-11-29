@@ -28,13 +28,12 @@ let phonebook = [
   }
 ]
 
+app.use(express.static('build'));
 morgan.token('body', (req, res) => JSON.stringify(req.body))
 app.use(bodyParser.json());
 app.use(morgan('tiny'))
 app.use(morgan(':body'))
 
-
-generic.get('/', (req, res) => res.send('<h1>Welcome to the phonebook API</h1>'))
 
 generic.get('/info', (req, res) => res
   .send(`
@@ -89,7 +88,6 @@ api.post('/phonebook', (req, res) => {
   }
 
   phonebook = [...phonebook, contact];
-
   res.status(200).json(contact)
 })
 
